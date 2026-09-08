@@ -4,6 +4,7 @@
     modules = [
       inputs.nixos-wsl.nixosModules.default
       self.nixosModules.wsl
+      self.nixosModules.common
     ];
   };
 
