@@ -3,11 +3,19 @@
 let
   nvimConfig = {
     config.vim = {
+      options.shiftwidth = 2;
       viAlias = true;
       vimAlias = true;
+      binds.whichKey.enable = true;
 
       autocomplete = {
         blink-cmp.enable = true;
+      };
+      utility = {
+        mkdir.enable = true;
+        motion = {
+          flash-nvim.enable = true;
+        };
       };
       spellcheck = {
         enable = true;
@@ -25,23 +33,36 @@ let
       };
 
       languages = {
+        enableFormat = true;
+        enableTreesitter = true;
         clang.enable = true;
-        cmake.enable = true; 
+        cmake.enable = true;
         zig.enable = true;
         rust = {
           extensions.rustaceanvim.enable = true;
           extensions.crates-nvim.enable = true;
         };
-       };
-       theme = {
-         enable = true;
-         name = "oxocarbon";
-         style = "dark";
-       };
+        nix = {
+          enable = true;
+          format.type = [ "nixfmt" ];
+        };
+      };
+      theme = {
+        enable = true;
+        name = "gruber-darker";
+        style = "dark";
+      };
+      telescope = {
+        enable = true;
+      };
+      git = {
+        gitsigns.enable = true;
+      };
     };
   };
 
-  mkNvim = pkgs:
+  mkNvim =
+    pkgs:
     (inputs.nvf.lib.neovimConfiguration {
       inherit pkgs;
       modules = [ nvimConfig ];

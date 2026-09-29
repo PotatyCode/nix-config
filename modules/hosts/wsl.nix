@@ -1,4 +1,4 @@
-{ inputs, self, ... }:
+{ inputs, self, pkgs, ... }:
 
 {
   flake.nixosConfigurations.wsl =
@@ -7,15 +7,26 @@
 
       modules = [
         inputs.nixos-wsl.nixosModules.default
+        inputs.sops-nix.nixosModules.sops
 
         self.nixosModules.common
         self.nixosModules.wsl
         self.nixosModules.nvim
         self.nixosModules.fish
+        self.nixosModules.media
+        
+        self.nixosModules.grafana
+        self.nixosModules.prometheus
+
+        self.nixosModules.caddy
       ];
     };
 
-  flake.nixosModules.wsl = { ... }: {
+  flake.nixosModules.wsl = { config, pkgs,... }: {
+    environment.systemPackages = with pkgs; [
+        cargo
+        typst
+    ];
     system.stateVersion = "26.05";
 
     wsl.enable = true;

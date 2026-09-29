@@ -5,6 +5,7 @@
       environment.systemPackages = with pkgs; [
         git
         btop
+        tree
       ];
       time.timeZone = "Australia/Brisbane";
 
