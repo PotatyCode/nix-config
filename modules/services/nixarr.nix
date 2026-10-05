@@ -12,13 +12,13 @@
 
     nixarr = {
       enable = true;
-      mediaDir  = "/media";
+      mediaDir = "/media";
       stateDir = "/services";
       exporters.enable = true;
 
       vpn = {
         enable = true;
-        wgConf = "/home/nixos/vpn.txt";
+        wgConf = "/home/nixos/secretes/vpn.txt";
 
         vpnTestService = {
           enable = true;
@@ -35,15 +35,15 @@
 
       jellyfin.enable = true;
       radarr = {
-        enable =  true;
+        enable = true;
         settings-sync.transmission.enable = true;
       };
 
       sonarr = {
-        enable =  true;
+        enable = true;
         settings-sync.transmission.enable = true;
       };
-      
+
       bazarr = {
         enable = true;
         settings-sync = {
@@ -53,7 +53,7 @@
       };
 
       prowlarr = {
-        enable =  true;
+        enable = true;
         settings-sync = {
           sonarr.enable = true;
           radarr.enable = true;

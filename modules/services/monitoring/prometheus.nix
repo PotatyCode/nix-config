@@ -14,9 +14,7 @@
       enable = true;
       enabledCollectors = lib.mkForce [
         "systemd"
-        "tcpstat"
-        "network_route"
-        "sensors"
+        "hwmon"
       ];
     };
 

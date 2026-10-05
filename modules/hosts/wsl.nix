@@ -1,40 +1,34 @@
-{ inputs, self, pkgs, ... }:
+{
+  inputs,
+  self,
+  ...
+}:
 
 {
-  flake.nixosConfigurations.wsl =
-    inputs.nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+  flake.nixosConfigurations.wsl = inputs.nixpkgs.lib.nixosSystem {
+    system = "x86_64-linux";
 
-      modules = [
-        inputs.nixos-wsl.nixosModules.default
-        inputs.sops-nix.nixosModules.sops
+    modules = [
+      inputs.nixos-wsl.nixosModules.default
 
-        self.nixosModules.common
-        self.nixosModules.wsl
-        self.nixosModules.nvim
-        self.nixosModules.fish
-        self.nixosModules.media
-        
-        self.nixosModules.grafana
-        self.nixosModules.prometheus
+      self.nixosModules.common
+      self.nixosModules.wsl
+      self.nixosModules.media
 
-        self.nixosModules.caddy
-      ];
-    };
+      self.nixosModules.grafana
+      self.nixosModules.prometheus
 
-  flake.nixosModules.wsl = { config, pkgs,... }: {
+      self.nixosModules.caddy
+    ];
+  };
+
+  flake.nixosModules.wsl = { config, pkgs, ... }: {
     environment.systemPackages = with pkgs; [
-        cargo
-        typst
     ];
     system.stateVersion = "26.05";
 
     wsl.enable = true;
     wsl.defaultUser = "nixos";
 
-    nix.settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
   };
 }
