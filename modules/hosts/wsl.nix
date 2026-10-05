@@ -13,12 +13,6 @@
 
       self.nixosModules.common
       self.nixosModules.wsl
-      self.nixosModules.media
-
-      self.nixosModules.grafana
-      self.nixosModules.prometheus
-
-      self.nixosModules.caddy
     ];
   };
 

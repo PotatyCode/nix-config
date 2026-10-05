@@ -6,6 +6,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-26.05";
 
     nixos-wsl.url = "github:nix-community/NixOS-WSl";
+    disko.url = "github:nix-community/disko";
     flake-parts.url = "github:hercules-ci/flake-parts";
    import-tree.url = "github:vic/import-tree";
 
@@ -28,21 +29,4 @@
   outputs = inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } 
       (inputs.import-tree ./modules);
-
-    #  imports = [
-    #    ./modules/common.nix
-#
-#        ./modules/programs/nvim.nix
-#        ./modules/programs/fish.nix
-#
-#        ./modules/hosts/wsl.nix
-#        
-#        ./modules/services/nixarr.nix
-#
-#        ./modules/networking/vpn.nix
-#
-#
-#        ./modules/services/monitoring/grafana.nix
-#        ./modules/services/monitoring/prometheus.nix
-#      ];
 }
