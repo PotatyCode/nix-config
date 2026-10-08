@@ -10,6 +10,7 @@
 
     modules = [
       inputs.nixos-wsl.nixosModules.default
+      self.nixosModules.ssh
 
       self.nixosModules.common
       self.nixosModules.wsl

@@ -25,6 +25,7 @@
   flake.nixosModules.server = { config, pkgs, ... }: {
     environment.systemPackages = with pkgs; [
     ];
+
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     networking.useDHCP = true;

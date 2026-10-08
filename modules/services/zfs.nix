@@ -7,21 +7,21 @@
       initrd.supportedFilesystems = [ "zfs" ];
       zfs = {
         devNodes = "/dev/disk/by-id";
-	forceImportRoot = true;
-	forceImportAll = false;
+        forceImportRoot = true;
+        forceImportAll = false;
       };
     };
     services.zfs = {
       autoScrub = {
         enable = true;
-	interval = "monthly";
+        interval = "monthly";
       };
       autoSnapshot = {
         enable = true;
-	monthly = 3;
+        monthly = 3;
         weekly = 4;
-	daily = 7;
-	hourly = 24;
+        daily = 7;
+        hourly = 24;
       };
     };
   };
