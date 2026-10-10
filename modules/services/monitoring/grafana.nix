@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.nixosModules.grafana = {
+  flake.nixosModules.grafana = { config, self, ... }: {
     services.grafana = {
       enable = true;
       dataDir = "/services/grafana";
@@ -12,8 +12,7 @@
           http_port = 3000;
         };
 
-        security.secret_key =
-          "f3fedfc2845b0b29e0f77ac4bc42276b9700522b9f00152f8b1789b399fcf8e5";
+        security.secret_key = "f3fedfc2845b0b29e0f77ac4bc42276b9700522b9f00152f8b1789b399fcf8e5";
       };
 
       provision = {
@@ -43,11 +42,9 @@
     };
 
     environment.etc = {
-    "grafana/dashboards/system-overview.json".source =
-      ./dashboards/system-overview.json;
-    "grafana/dashboards/linux-overview.json".source = 
-      ./dashboards/19937_rev8.json;
-      };
+      "grafana/dashboards/system-overview.json".source = ./dashboards/system-overview.json;
+      "grafana/dashboards/linux-overview.json".source = ./dashboards/19937_rev8.json;
+    };
   };
-  
+
 }

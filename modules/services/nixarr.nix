@@ -18,7 +18,7 @@
 
       vpn = {
         enable = true;
-        wgConf = "/home/nixos/secretes/vpn.txt";
+        wgConf = "/secrets/vpn.txt";
 
         vpnTestService = {
           enable = true;
@@ -31,17 +31,21 @@
         enable = true;
         vpn.enable = true;
         peerPort = 60729;
+        openFirewall = true;
       };
 
       jellyfin.enable = true;
+      jellyfin.openFirewall = true;
       radarr = {
         enable = true;
         settings-sync.transmission.enable = true;
+        openFirewall = true;
       };
 
       sonarr = {
         enable = true;
         settings-sync.transmission.enable = true;
+        openFirewall = true;
       };
 
       bazarr = {
@@ -50,6 +54,7 @@
           sonarr.enable = true;
           radarr.enable = true;
         };
+        openFirewall = true;
       };
 
       prowlarr = {
@@ -58,6 +63,7 @@
           sonarr.enable = true;
           radarr.enable = true;
         };
+        openFirewall = true;
       };
     };
 

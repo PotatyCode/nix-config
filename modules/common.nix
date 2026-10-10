@@ -16,6 +16,7 @@
         btop
         tree
         devenv
+        nixfmt
       ];
       imports = [
         self.nixosModules.nvim

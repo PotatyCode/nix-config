@@ -19,6 +19,9 @@
       self.nixosModules.zfs
 
       self.nixosModules.common
+      self.nixosModules.media
+      self.nixosModules.grafana
+      self.nixosModules.prometheus
     ];
   };
 
