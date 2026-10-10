@@ -27,10 +27,9 @@
       };
 
       seerr.enable = true;
-      transmission = {
+      qbittorrent = {
         enable = true;
         vpn.enable = true;
-        peerPort = 60729;
         openFirewall = true;
       };
 
@@ -38,13 +37,11 @@
       jellyfin.openFirewall = true;
       radarr = {
         enable = true;
-        settings-sync.transmission.enable = true;
         openFirewall = true;
       };
 
       sonarr = {
         enable = true;
-        settings-sync.transmission.enable = true;
         openFirewall = true;
       };
 
