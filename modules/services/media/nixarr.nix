@@ -20,13 +20,10 @@
         enable = true;
         wgConf = "/secrets/vpn.txt";
 
-        vpnTestService = {
-          enable = true;
-          port = 60729;
-        };
       };
 
       seerr.enable = true;
+      seerr.openFirewall = true;
       qbittorrent = {
         enable = true;
         vpn.enable = true;
@@ -63,9 +60,18 @@
         openFirewall = true;
       };
     };
+    services.qbittorrent.serverConfig = {
+      legalNotice.Accepted = true;
+      Preferences = {
+        WebUI = {
+          Username = "admin";
+          Password_PBKDF2 = "IZZUu4EhdX3gDiHYLy+eIw==:ZzBijzk6BP9ZLQ2kfNtFhEfxY5pVmtbJ2gd7xMnLIXeFZKg9ViF2pnemetYAxxMbAvYerheUCN5M2sL0P9TB6Q==";
+        };
+      };
+    };
 
     virtualisation.oci-containers = {
-      backend = "docker";
+      backend = "podman";
 
       containers.profilarr = {
         image = "ghcr.io/dictionarry-hub/profilarr:latest";
