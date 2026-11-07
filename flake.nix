@@ -8,21 +8,13 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSl";
     disko.url = "github:nix-community/disko";
     flake-parts.url = "github:hercules-ci/flake-parts";
-   import-tree.url = "github:vic/import-tree";
+    import-tree.url = "github:vic/import-tree";
+    wrappers.url = "github:Lassulus/wrappers";
+    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
 
     nvf.url = "github:NotAShelf/nvf";
     vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
-
     nixarr.url = "github:nix-media-server/nixarr";
-    authentik-nix = {
-      url = "github:nix-community/authentik-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs"; 
-    };
 
   };
 
