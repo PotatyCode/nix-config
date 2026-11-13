@@ -5,16 +5,18 @@
     lib,
     pkgs,
     ...
-  }: {
+  }: let
+    selfpkgs = self.packages."${pkgs.system}";
+  in {
     environment.systemPackages = [
-      pkgs.git
+      selfpkgs.git
+      selfpkgs.nvim
       pkgs.gh
       pkgs.btop
       pkgs.tree
       pkgs.nixfmt
     ];
     imports = [
-      self.nixosModules.nvim
       self.nixosModules.fish
     ];
     time.timeZone = "Australia/Brisbane";
