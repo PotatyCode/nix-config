@@ -7,6 +7,7 @@
       description = "Standard Desktop user";
       extraGroups = [
         "wheel"
+        "networkmanager"
       ];
     };
   };

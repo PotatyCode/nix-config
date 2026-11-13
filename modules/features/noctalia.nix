@@ -1,25 +1,29 @@
-{inputs, ...}: {
+{
+  inputs,
+  self,
+  ...
+}: {
   perSystem = {pkgs, ...}: {
     packages = {
-      noctalia-shell = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
+      noctalia = inputs.wrapper-modules.wrappers.noctalia.wrap {
         inherit pkgs;
-        package = pkgs.noctalia-shell.overrideAttrs {
+        package = pkgs.noctalia.overrideAttrs {
           name = "vjnoctalia2";
         };
         env = {
           "NOCTALIA_CACHE_DIR" = "/tmp/vj-noctalia-cache/";
         };
         colors = {
-          mError = "#fb4934";
+          mError = "#${self.themeNoHash.base08}";
           mHover = "#83a598";
           mOnError = "#282828";
           mOnHover = "#282828";
-          mOnPrimary = "#282828";
-          mOnSecondary = "#282828";
-          mOnSurface = "#fbf1c7";
+          mOnPrimary = "#${self.themeNoHash.base00}";
+          mOnSecondary = "#${self.themeNoHash.base02}";
+          mOnSurface = "#${self.themeNoHash.base01}";
           mOnSurfaceVariant = "#ebdbb2";
           mOnTertiary = "#282828";
-          mOutline = "#57514e";
+          mOutline = "#${self.themeNoHash.base0D}";
           mPrimary = "#b8bb26";
           mSecondary = "#fabd2f";
           mShadow = "#282828";
@@ -161,16 +165,16 @@
               }
             ];
           };
-          # colorSchemes = {
-          #   darkMode = true;
-          #   generateTemplatesForPredefined = true;
-          #   manualSunrise = "06:30";
-          #   manualSunset = "18:30";
-          #   matugenSchemeType = "scheme-fruit-salad";
-          #   predefinedScheme = "Gruvbox";
-          #   schedulingMode = "off";
-          #   useWallpaperColors = false;
-          # };
+          colorSchemes = {
+            darkMode = true;
+            generateTemplatesForPredefined = true;
+            manualSunrise = "06:30";
+            manualSunset = "18:30";
+            matugenSchemeType = "scheme-fruit-salad";
+            predefinedScheme = "Gruvbox";
+            schedulingMode = "off";
+            useWallpaperColors = false;
+          };
           controlCenter = {
             cards = [
               {
@@ -214,22 +218,6 @@
           desktopWidgets = {
             enabled = false;
             gridSnap = false;
-            monitorWidgets = [
-              {
-                name = "HDMI-A-1";
-                widgets = [
-                  {
-                    hideMode = "visible";
-                    id = "MediaPlayer";
-                    showBackground = true;
-                    showButtons = true;
-                    visualizerType = "linear";
-                    x = 100;
-                    y = 200;
-                  }
-                ];
-              }
-            ];
           };
           dock = {
             animationSpeed = 2;
@@ -250,7 +238,6 @@
             allowPanelsOnScreenWithoutBar = true;
             animationDisabled = false;
             animationSpeed = 1;
-            avatarImage = ../../nixos/features/wallpaper/gruvbox-mountain-village.png;
             boxRadiusRatio = 1;
             compactLockScreen = false;
             dimmerOpacity = 0.15;
@@ -421,15 +408,15 @@
             emacs = false;
             enableUserTemplates = false;
             foot = false;
-            fuzzel = false;
+            fuzzel = true;
             ghostty = false;
-            gtk = false;
+            gtk = true;
             helix = false;
             hyprland = false;
             kcolorscheme = false;
-            kitty = false;
+            kitty = true;
             mango = false;
-            niri = false;
+            niri = true;
             pywalfox = false;
             qt = false;
             spicetify = false;

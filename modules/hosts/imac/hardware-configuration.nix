@@ -3,36 +3,52 @@
 # to /etc/nixos/configuration.nix instead.
 
 {
-  flake.nixosModules.imac-hardware = { config, lib, pkgs, modulesPath, ... }:{
+  flake.nixosModules.imac-hardware =
+    {
+      config,
+      lib,
+      pkgs,
+      modulesPath,
+      ...
+    }:
+    {
+      imports = [
+        (modulesPath + "/hardware/network/broadcom-43xx.nix")
+        (modulesPath + "/installer/scan/not-detected.nix")
+      ];
 
-  imports =
-    [ (modulesPath + "/hardware/network/broadcom-43xx.nix")
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+      boot.initrd.availableKernelModules = [
+        "xhci_pci"
+        "ahci"
+        "nvme"
+        "usb_storage"
+        "usbhid"
+        "sd_mod"
+        "sdhci_pci"
+      ];
+      boot.initrd.kernelModules = [ ];
+      boot.kernelModules = [ "kvm-intel" ];
+      boot.extraModulePackages = [ ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+      fileSystems."/" = {
+        device = "/dev/disk/by-uuid/e32664ef-0549-4c96-97f3-41ad1222e4a7";
+        fsType = "ext4";
+      };
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/7e7272d4-7ed7-4343-9faa-23be8c538223";
-      fsType = "ext4";
+      fileSystems."/boot" = {
+        device = "/dev/disk/by-uuid/24B8-4EFD";
+        fsType = "vfat";
+        options = [
+          "fmask=0077"
+          "dmask=0077"
+        ];
+      };
+
+      swapDevices = [
+        { device = "/dev/disk/by-uuid/8dc1389c-c7b2-4296-8d2c-1a0819ae26d4"; }
+      ];
+
+      nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+      hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/B6A6-597A";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
-
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/b5f92d1a-1823-4d96-b901-2d6b04a87c5c"; }
-    ];
-
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  };
 }
-
-
