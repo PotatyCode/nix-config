@@ -1,5 +1,6 @@
 let
   theme = {
+    name = "Catppuccin";
     base00 = "#1e1e2e"; # Base
     base01 = "#181825"; # Mantle
     base02 = "#313244"; # Surface0

@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   flake.nixosModules.potatyman-user = {
     users.users.potatyman = {
       isNormalUser = true;
@@ -12,4 +10,3 @@
     };
   };
 }
-

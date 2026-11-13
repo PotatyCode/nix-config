@@ -23,6 +23,9 @@
 
     i18n.defaultLocale = "en_AU.UTF-8";
 
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
+
     nix = {
       settings = {
         experimental-features = [
@@ -34,7 +37,7 @@
       gc = {
         automatic = true;
         dates = "weekly";
-        options = "delete-older-than 14d";
+        options = "delete-older-than 7d";
       };
     };
   };
