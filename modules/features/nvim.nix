@@ -1,6 +1,6 @@
 {
-  self,
   inputs,
+  self,
   ...
 }: {
   perSystem = {pkgs, ...}: {
@@ -26,9 +26,10 @@
 
               theme = {
                 enable = true;
-                name = "catppuccin";
+                name = self.theme.name;
                 style = "mocha";
               };
+              dashboard.dashboard-nvim.enable = true;
 
               terminal.toggleterm.enable = true;
 

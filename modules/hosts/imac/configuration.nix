@@ -9,6 +9,7 @@
       self.nixosModules.imac-hardware
       self.nixosModules.imac
       self.nixosModules.desktop
+      self.nixosModules.gaming
     ];
   };
 

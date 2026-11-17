@@ -15,10 +15,14 @@
     nvf.url = "github:NotAShelf/nvf";
     vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
     nixarr.url = "github:nix-media-server/nixarr";
-
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } 
-      (inputs.import-tree ./modules);
+  outputs = inputs @ {flake-parts, ...}:
+    flake-parts.lib.mkFlake {inherit inputs;}
+    (inputs.import-tree ./modules);
 }

@@ -44,7 +44,8 @@
 
         binds = {
           "Mod+Space".spawn-sh = "kitty";
-          "Mod+B".spawn-sh = "chromium";
+          "Mod+B".spawn-sh = "flatpak run app.zen_browser.zen";
+          "Mod+Y".spawn-sh = "chromium --app=https://www.youtube.com";
 
           "Mod+Q".close-window = {};
           "Mod+F".maximize-column = {};
