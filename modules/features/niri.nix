@@ -15,7 +15,6 @@
     };
     config = {
       settings = let
-        # startNoctaliaExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.start-noctalia-shell;
         noctaliaExe = lib.getExe self.packages.${config.pkgs.system}.noctalia;
       in {
         prefer-no-csd = {};
@@ -46,6 +45,7 @@
           "Mod+Space".spawn-sh = "kitty";
           "Mod+B".spawn-sh = "flatpak run app.zen_browser.zen";
           "Mod+Y".spawn-sh = "chromium --app=https://www.youtube.com";
+          "Mod+Shift+J".spawn-sh = "jellyfin-desktop";
 
           "Mod+Q".close-window = {};
           "Mod+F".maximize-column = {};
@@ -66,7 +66,6 @@
           "Mod+Shift+H".move-column-left = {};
           "Mod+Shift+L".move-column-right = {};
           "Mod+Shift+K".move-window-up = {};
-          "Mod+Shift+J".move-window-down = {};
 
           "Mod+1".focus-workspace = "w0";
           "Mod+2".focus-workspace = "w1";

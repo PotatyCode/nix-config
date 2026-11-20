@@ -13,7 +13,13 @@
     ];
   };
 
-  flake.nixosModules.imac = {...}: {
+  flake.nixosModules.imac = {pkgs, ...}: {
+    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.allowUnsupportedSystem = true;
+    environment.systemPackages = [
+      pkgs.tidal
+      pkgs.jellyfin-desktop
+    ];
     networking.hostName = "nixos";
     system.stateVersion = "26.05";
   };

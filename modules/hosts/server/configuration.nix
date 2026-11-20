@@ -2,9 +2,7 @@
   inputs,
   self,
   ...
-}:
-
-{
+}: {
   flake.nixosConfigurations.server = inputs.nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
 
@@ -25,14 +23,20 @@
     ];
   };
 
-  flake.nixosModules.server = { config, pkgs, ... }: {
+  flake.nixosModules.server = {
+    config,
+    pkgs,
+    ...
+  }: {
     environment.systemPackages = with pkgs; [
     ];
 
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
+
     networking.useDHCP = true;
     networking.hostId = "d4bbac73";
+
     networking.hostName = "potatyserv";
     system.stateVersion = "26.05";
   };
