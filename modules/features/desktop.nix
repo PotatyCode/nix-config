@@ -8,7 +8,8 @@
   in {
     environment.systemPackages = [
       selfpkgs.noctalia
-      selfpkgs.kitty
+      selfpkgs.terminal
+
       pkgs.ungoogled-chromium
       pkgs.firefox
     ];

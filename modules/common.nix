@@ -11,6 +11,7 @@
     environment.systemPackages = [
       selfpkgs.git
       selfpkgs.nvim
+
       pkgs.gh
       pkgs.btop
       pkgs.tree
